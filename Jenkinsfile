@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        HOSTNAME = "${sh(script:'echo $HOSTNAME', returnStdout: true).trim()}"
+    }
+
     stages {
         stage('Verify Branch') {
             steps {
@@ -9,7 +13,7 @@ pipeline {
         }
         stage('Docker Build') {
           steps{
-            sh(script: 'echo $HOSTNAME')
+            echo "${env.HOSTNAME}"
             // sh(script: 'docker images -a')
             // sh(script: """
             //   cd azure-vote/
