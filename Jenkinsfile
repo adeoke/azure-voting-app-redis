@@ -14,8 +14,9 @@ pipeline {
         stage('Docker Build') {
           steps{
             echo "${env.HOSTNAME}"
-            sh(script: "which docker")
             sh(script: "which java")
+            sh(script: "which docker")
+            
             // sh(script: 'docker images -a')
             // sh(script: """
             //   cd azure-vote/
